@@ -1,0 +1,272 @@
+{
+    "projectId": "677806ba000dac2f7fb3",
+    "projectName": "Tivra",
+    "settings": {
+        "services": {
+            "account": true,
+            "avatars": true,
+            "databases": true,
+            "locale": true,
+            "health": true,
+            "storage": true,
+            "teams": true,
+            "users": true,
+            "functions": true,
+            "graphql": true,
+            "messaging": true
+        },
+        "auth": {
+            "methods": {
+                "jwt": false,
+                "phone": true,
+                "invites": true,
+                "anonymous": false,
+                "email-otp": true,
+                "magic-url": false,
+                "email-password": true
+            },
+            "security": {
+                "duration": 1814400,
+                "limit": 0,
+                "sessionsLimit": 1,
+                "passwordHistory": 0,
+                "passwordDictionary": false,
+                "personalDataCheck": false,
+                "sessionAlerts": false,
+                "mockNumbers": []
+            }
+        }
+    },
+    "databases": [
+        {
+            "$id": "6778ddda001893ffb750",
+            "name": "thunder",
+            "enabled": true
+        }
+    ],
+    "collections": [
+        {
+            "$id": "6784bf07002b3b8d28f8",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "databaseId": "6778ddda001893ffb750",
+            "name": "user",
+            "enabled": true,
+            "documentSecurity": true,
+            "attributes": [
+                {
+                    "key": "fullName",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 30,
+                    "default": null
+                },
+                {
+                    "key": "mobile",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 15,
+                    "default": null
+                },
+                {
+                    "key": "password",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 108,
+                    "default": null
+                },
+                {
+                    "key": "logoUrl",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "index_1",
+                    "type": "unique",
+                    "status": "available",
+                    "attributes": [
+                        "mobile"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        },
+        {
+            "$id": "6784c01a002f434e8648",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "databaseId": "6778ddda001893ffb750",
+            "name": "messages",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "content",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 1000,
+                    "default": null
+                },
+                {
+                    "key": "senderId",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "chatroomId",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "messageType",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 10,
+                    "default": "text"
+                },
+                {
+                    "key": "senderName",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 50,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "6787e4ee000572c009eb",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "databaseId": "6778ddda001893ffb750",
+            "name": "chatroom",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 150,
+                    "default": null
+                },
+                {
+                    "key": "membersId",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 1000,
+                    "default": null
+                },
+                {
+                    "key": "chatroomtype",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 10,
+                    "default": "single"
+                },
+                {
+                    "key": "blocked_ids",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 5000,
+                    "default": null
+                },
+                {
+                    "key": "delete_chats_ids",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 5000,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "67ab1ec5000da5a59547",
+            "$permissions": [],
+            "databaseId": "6778ddda001893ffb750",
+            "name": "calls",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [],
+            "indexes": []
+        }
+    ],
+    "buckets": [
+        {
+            "$id": "679ba96f00261b4ee293",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "fileSecurity": false,
+            "name": "Thunder",
+            "enabled": true,
+            "maximumFileSize": 50000000,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        }
+    ],
+    "functions": [
+        {
+            "$id": "67acd4c10027bee93ba8",
+            "execute": [
+                "any"
+            ],
+            "name": "Genearte zego token",
+            "enabled": true,
+            "logging": true,
+            "runtime": "node-22",
+            "scopes": [
+                "users.read"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "specification": "s-0.5vcpu-512mb",
+            "path": "functions/Genearte zego token"
+        }
+    ]
+}
